@@ -29,4 +29,8 @@ class Scoreboard(Turtle):
     def game_over(self):
         """Display the game over message in the center"""
         self.goto(0,0)
-        self.write("GAME OVER", align= ALIGNMENT, font=FONT)
+        self.write(f"GAME OVER\nFinal Score: {self.score}\nPress 'R' to Restart", align=ALIGNMENT, font=FONT)
+        
+    def reset(self):
+        self.score = 0
+        self.update_scoreboard

@@ -60,8 +60,12 @@ class Snake:
         if self.head.heading() != LEFT: # Prevent the snake from moving in the opposite direction
             self.head.setheading(RIGHT)
 
-
-
+    def reset(self):
+        for segment in self.segments:
+            segment.hideturtle()  # Hide each segment
+        self.segments.clear()  # Clear the list of segments
+        self.create_snake()  # Create a new snake
+        self.head = self.segments[0]  # Set the head to the new first segment
 
 
 

@@ -16,12 +16,21 @@ snake = Snake()
 food = Food()
 scoreboard = Scoreboard()
 
+def reset_game():
+    """Function to reset the game"""
+    scoreboard.reset()  # Reset the score
+    snake.reset()  # Reset the snake
+    food.refresh()  # Refresh food position
+    global game_is_on
+    game_is_on = True  # Restart the game loop
+
 # Set up controls for the snake
 screen.listen()
 screen.onkey(snake.up,"Up")
 screen.onkey(snake.down,"Down")
 screen.onkey(snake.left,"Left")
 screen.onkey(snake.right,"Right")
+screen.onkey(reset_game, "r")
 
 # Control the game loop
 game_is_on = True
