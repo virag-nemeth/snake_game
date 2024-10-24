@@ -33,4 +33,5 @@ class Scoreboard(Turtle):
         
     def reset(self):
         self.score = 0
+        self.goto(0, 270) 
         self.update_scoreboard

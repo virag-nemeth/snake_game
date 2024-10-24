@@ -39,7 +39,6 @@ class Snake:
         self.add_segment(self.segments[-1].position()) # Use the position of the last segment
 
 
-
     def up(self):
         """# Change the direction of the snake to up"""
         if self.head.heading() != DOWN: # Prevent the snake from moving in the opposite direction
@@ -61,11 +60,12 @@ class Snake:
             self.head.setheading(RIGHT)
 
     def reset(self):
+        # Clear existing segments and recreate the snake
         for segment in self.segments:
             segment.hideturtle()  # Hide each segment
         self.segments.clear()  # Clear the list of segments
         self.create_snake()  # Create a new snake
-        self.head = self.segments[0]  # Set the head to the new first segment
+        self.head = self.segments[0]  # Set the head to the new first segmentt
 
 
 
