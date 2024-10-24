@@ -31,7 +31,8 @@ class Scoreboard(Turtle):
         self.goto(0,0)
         self.write(f"GAME OVER\nFinal Score: {self.score}\nPress 'R' to Restart", align=ALIGNMENT, font=FONT)
         
-    def reset(self):
+    def restart(self):
         self.score = 0
+        self.clear()
         self.goto(0, 270) 
-        self.update_scoreboard
+        self.update_scoreboard()

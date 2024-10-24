@@ -59,7 +59,7 @@ class Snake:
         if self.head.heading() != LEFT: # Prevent the snake from moving in the opposite direction
             self.head.setheading(RIGHT)
 
-    def reset(self):
+    def restart(self):
         # Clear existing segments and recreate the snake
         for segment in self.segments:
             segment.hideturtle()  # Hide each segment

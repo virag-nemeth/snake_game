@@ -11,36 +11,30 @@ scoreboard = Scoreboard()
 # Control the game loop
 game_is_on = True
 
-def reset_game():
-    """Function to reset the game"""
-    global game_is_on
-    screen.clear() #Clear the screen
-    screen.bgcolor("black")  # Reset background color
-    
-    scoreboard.reset()  # Reset the score
-    scoreboard.update_scoreboard()  # Update scoreboard display
-    
-    food.refresh()  # Refresh food position
-    snake.reset()
-    
-    game_is_on = True  # Restart the game loop
-    game_logic()
-    
-
-
 #Set up the game screen
 screen = Screen()
 screen.setup(600,600) # Set the size of the screen
 screen.bgcolor("black") # Set the background color to black
 screen.title("Snake Game") # Set the title of the window
 
-
-
+def reset_game():
+    """Function to reset the game"""
+    global game_is_on
+    
+    scoreboard.restart()  # Reset the score
+    food.refresh()  #Reste the food
+    snake.restart()  #Reset the snake
+    
+    # Restart the game loop
+    game_is_on = True  
+    game_logic()
+    
 
 def game_logic():
     global game_is_on
     
     screen.tracer(0) # Disable automatic screen updates for manual control
+    
     # Set up controls for the snake
     screen.listen()
     screen.onkey(snake.up,"Up")
@@ -61,7 +55,10 @@ def game_logic():
             scoreboard.increase_score() # Update the score
 
         #Detect collision with wall
-        if snake.head.xcor() > 290 or snake.head.xcor() < -290 or snake.head.ycor() > 290 or snake.head.ycor() < -290:
+        if (snake.head.xcor() > 290 or 
+            snake.head.xcor() < -290 or 
+            snake.head.ycor() > 290 or 
+            snake.head.ycor() < -290):
             game_is_on = False # End the game if the snake hits the wall
             scoreboard.game_over() # Display game over message
 
@@ -73,10 +70,6 @@ def game_logic():
 
 
 game_logic()
-
-
-
-
 
 
 
